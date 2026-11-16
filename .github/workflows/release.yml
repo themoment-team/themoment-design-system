@@ -1,0 +1,43 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+concurrency:
+  group: release-main
+  cancel-in-progress: false
+
+jobs:
+  release:
+    # Explicit maintainer opt-in; initial publication is not authorized by this file.
+    if: vars.RELEASE_ENABLED == 'true'
+    environment: npm-release
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      # npm >=11.5.1 supports trusted publishing; independent of Node's bundled npm.
+      - run: npm install --global npm@11.5.1
+      - run: pnpm install --frozen-lockfile
+      - uses: changesets/action@v2.1.2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          version-script: pnpm changeset version
+          publish-script: pnpm build && pnpm changeset publish
+          pr-title: 'chore: 패키지 릴리스 버전 갱신'
+          commit-message: 'chore: 패키지 릴리스 버전 갱신'
+        env:
+          NPM_CONFIG_PROVENANCE: 'true'
