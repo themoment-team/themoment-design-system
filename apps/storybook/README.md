@@ -8,15 +8,15 @@
 
 ```sh
 pnpm --filter storybook dev
-pnpm --filter storybook build
+pnpm build:storybook
 pnpm --filter storybook exec playwright install chromium
-pnpm --filter storybook test
+pnpm test:storybook
 pnpm --filter storybook typecheck
 ```
 
-`dev`, `build`, `test`는 루트 기준 `pnpm --filter './packages/*' build`를 먼저 실행합니다.
-`typecheck`는 루트 Turbo의 의존 패키지 빌드 이후 실행합니다.
-직접 실행할 때는 `pnpm --filter storybook build:packages`를 먼저 실행하세요.
+`build:storybook`, `test:storybook`은 Turbo로 실행해 의존 패키지(`packages/*`)를 먼저 빌드합니다.
+`dev`는 단독 실행용이라 스크립트 안에서 패키지를 먼저 빌드합니다.
+`pnpm --filter storybook build`/`test`를 직접 실행할 때는 `pnpm build`로 패키지를 먼저 빌드하세요.
 
 - React 패키지는 `workspace:*` 의존성이며 소스 alias는 없습니다. 공개 export를 통해 `dist/`만 소비합니다.
 - 토큰 문서는 `/tokens`의 `values`를 순회해 생성합니다. 확정 토큰으로 교체한 뒤 재빌드하면 경로·값·행 수가 바뀝니다.

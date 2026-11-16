@@ -33,7 +33,7 @@ Trusted publishing을 사용할 수 없을 때만 관리자가 별도로 승인�
 - Root Directory: `apps/storybook`
 - Framework Preset: Other
 - Install Command: `pnpm install --frozen-lockfile`
-- Build Command: `pnpm build` (Storybook 앱의 스크립트가 루트 패키지 선행 빌드를 포함)
+- Build Command: `pnpm --dir ../.. build:storybook` (Turbo가 의존 패키지를 먼저 빌드)
 - Output Directory: `storybook-static` (프로젝트 root 기준)
 - Node 버전: 루트 `.nvmrc`와 일치하는 22.x
 - 프로젝트 root 외부 workspace 소스를 빌드에 포함하도록 설정하고, Git 연결의 PR Preview Deployment를 활성화합니다. main은 Production Branch로 지정합니다.
