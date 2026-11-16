@@ -38,11 +38,18 @@ await dictionary.buildAllPlatforms();
 const vars = Object.create(null);
 const values = Object.create(null);
 function setPath(target, path, value) {
-  const parent = path.slice(0, -1).reduce((node, segment) => {
-    node[segment] ??= Object.create(null);
+  const parent = path.slice(0, -1).reduce((node, segment, index) => {
+    const existing = node[segment];
+    if (existing === undefined) node[segment] = Object.create(null);
+    else if (existing === null || typeof existing !== 'object') {
+      throw new Error(`토큰 경로가 다른 토큰 값과 겹칩니다: ${path.slice(0, index + 1).join('.')}`);
+    }
     return node[segment];
   }, target);
-  parent[path.at(-1)] = value;
+  const key = path.at(-1);
+  if (key in parent)
+    throw new Error(`토큰 경로가 그룹 또는 다른 토큰과 겹칩니다: ${path.join('.')}`);
+  parent[key] = value;
 }
 const namespaces = { color: 'color', radius: 'radius', spacing: 'spacing', 'font-size': 'text' };
 const mappings = [];
