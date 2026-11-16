@@ -10,9 +10,9 @@ themoment 디자인 시스템의 React 패키지입니다. 컴포넌트를 쓰�
 pnpm add @themoment-team/design-system-react
 ```
 
-- 필수 peer: `react`, `react-dom` (`^17 || ^18 || ^19`, `@base-ui/react`가 지원하는 범위와 같습니다)
+- 필수 peer: `react`, `react-dom` (`^18 || ^19`)
 - 선택 peer: `tailwindcss` (`^4`, Tailwind를 쓰는 프로젝트만)
-- 토큰 패키지(`@themoment-team/design-system-tokens`)와 `@base-ui/react`는 의존성으로 함께 설치되므로 따로 설치하지 않습니다.
+- 토큰 패키지(`@themoment-team/design-system-tokens`)는 의존성으로 함께 설치되므로 따로 설치하지 않습니다. `@base-ui/react`는 첫 컴포넌트를 추가할 때 의존성에 넣습니다.
 - ESM 전용 패키지입니다. CommonJS 빌드는 제공하지 않습니다.
 
 ## 사용
