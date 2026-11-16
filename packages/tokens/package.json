@@ -1,0 +1,8 @@
+{
+  "name": "@themoment-team/design-system-tokens",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --build --pretty false"
+  }
+}
