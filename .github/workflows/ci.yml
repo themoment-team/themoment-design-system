@@ -32,5 +32,5 @@ jobs:
       - run: pnpm test
       - run: pnpm build
       - run: pnpm lint:packages
-      - run: pnpm --filter storybook build
+      - run: pnpm build:storybook
       - run: pnpm test:consumers

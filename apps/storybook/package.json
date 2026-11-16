@@ -5,8 +5,8 @@
   "scripts": {
     "build:packages": "pnpm --dir ../.. --filter './packages/*' build",
     "dev": "pnpm build:packages && storybook dev -p 6006",
-    "build": "pnpm build:packages && storybook build",
-    "test": "pnpm build:packages && vitest run",
+    "build": "storybook build",
+    "test": "vitest run",
     "typecheck": "tsc --project tsconfig.json --pretty false"
   },
   "dependencies": {
