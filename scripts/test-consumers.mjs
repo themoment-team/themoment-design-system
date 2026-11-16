@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { cp, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { basename, join, relative, resolve, sep } from 'node:path';
+import { basename, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -28,9 +28,11 @@ function run(args, cwd = root, config = {}) {
 
 const temporary = await mkdtemp(join(process.env.TMPDIR || tmpdir(), 'tm-ds-consumers-'));
 try {
-  const location = relative(root, temporary);
+  // relative()는 Windows에서 드라이브가 다르면 절대 경로를 돌려주므로 접두사로 판단합니다.
+  const repository = resolve(root);
+  const target = resolve(temporary);
   assert(
-    location === '..' || location.startsWith(`..${sep}`),
+    target !== repository && !target.startsWith(repository + sep),
     'Consumers must be outside the repo',
   );
   console.log(`[consumers] Isolated directory: ${temporary}`);
