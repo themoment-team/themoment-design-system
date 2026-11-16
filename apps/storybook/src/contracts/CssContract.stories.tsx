@@ -22,11 +22,12 @@ const meta = {
   component: Fixture,
   parameters: { layout: 'padded' },
   play: async ({ canvasElement, args }) => {
-    const frame = canvasElement.querySelector('iframe');
     const expected = args.override
       ? 'rgb(0, 128, 0)'
       : `rgb(${values.color.brand.default.components.map((part) => Math.round(part * 255)).join(', ')})`;
     await waitFor(() => {
+      // 리마운트·지연 렌더링에도 최신 iframe을 보도록 매번 다시 조회합니다.
+      const frame = canvasElement.querySelector('iframe');
       const element = frame?.contentDocument?.querySelector('[data-testid="brand"]');
       expect(element).toBeTruthy();
       expect(frame?.contentWindow?.getComputedStyle(element!).backgroundColor).toBe(expected);
