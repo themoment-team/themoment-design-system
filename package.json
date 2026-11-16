@@ -9,7 +9,7 @@
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
     "build": "turbo run build --filter=./packages/*",
-    "test:storybook": "turbo run test --filter=storybook",
+    "test:storybook": "pnpm --filter storybook test",
     "test:consumers": "node scripts/test-consumers.mjs"
   },
   "devDependencies": {
