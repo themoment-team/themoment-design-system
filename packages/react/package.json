@@ -12,10 +12,12 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    }
+    },
+    "./styles.css": "./dist/styles.css",
+    "./tailwind.css": "./dist/tailwind.css"
   },
   "scripts": {
-    "build": "tsdown",
+    "build": "tsdown && node scripts/build-css.mjs",
     "typecheck": "tsc --project tsconfig.json --pretty false"
   },
   "dependencies": {
