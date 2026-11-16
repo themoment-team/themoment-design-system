@@ -22,6 +22,7 @@
   },
   "scripts": {
     "build": "tsdown && node scripts/build-css.mjs",
+    "test": "vitest run",
     "typecheck": "tsc --project tsconfig.json --pretty false"
   },
   "dependencies": {
