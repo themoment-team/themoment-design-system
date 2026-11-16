@@ -1,5 +1,7 @@
 # themoment Design System — Figma 검토 요청
 
+> **참고용 문서 (2026-11-16):** 이 검토의 대상인 Figma 파일은 파기되었고, 디자이너가 디자인 시스템을 새로 만들고 있습니다. 아래 내용은 새 파일 검토 때 참고하기 위해서만 남겨 둡니다. 구현 범위 변경은 [구현 계획](./implementation-plan.md)의 "범위 변경" 절을 보세요.
+
 - 대상 파일: [themoment-Design-System](https://www.figma.com/design/nKZ0QCNMIEGDMyPR4GjRR5/themoment-Design-System)
 - 검토일: 2026-11-09
 - 목적: 코드 구현(토큰 → 컴포넌트)을 시작하기 전에 Figma와 코드의 기준 맞추기

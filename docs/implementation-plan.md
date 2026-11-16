@@ -4,6 +4,26 @@
 - 작성일: 2026-11-16
 - 근거 문서: Notion "themoment Design System 개발 계획", [Figma 검토 문서](./figma-review.md)
 
+## 범위 변경 (2026-11-16)
+
+기존 Figma 파일(`nKZ0QCNMIEGDMyPR4GjRR5`)은 파기되었고, 디자이너가 디자인 시스템을 처음부터 다시 만들고 있습니다.
+
+- **보류:** Figma를 근거로 하는 작업 전부. 실제 토큰 값, Button을 포함한 모든 컴포넌트는 새 디자인 시스템이 나온 뒤 진행합니다.
+- **마일스톤 1의 새 범위:** 디자인 값 없이 코드로 해결할 수 있는 인프라만 만듭니다.
+  - placeholder 토큰으로 동작하는 토큰 파이프라인
+  - React 패키지 빌드
+  - Storybook
+  - 사용하는 쪽 검증 예제
+  - CI
+- placeholder 토큰은 작은 DTCG JSON(예: `color/brand/default`, `color/text/primary`, `color/surface/default`, `radius/md`, `spacing/4`, `font-size/body`)으로 두고 placeholder임을 명시합니다. 새 디자인 시스템의 내보내기 결과로 그대로 교체합니다.
+- 작업별 상태:
+  - **T1 완료.** 계획에 없던 Turborepo를 추가했습니다(루트 `build`·`test`·`typecheck`가 `turbo run`을 호출).
+  - **T2:** placeholder 토큰 파이프라인으로 바꿉니다. Figma 추출은 하지 않습니다.
+  - **T3:** 그대로 진행합니다. `components` 레이어는 비어 있습니다.
+  - **T4:** 보류(새 디자인 시스템 이후).
+  - **T5·T6·T7:** Button에 의존하지 않게 바꿉니다. 각 작업의 "범위 변경 후" 항목을 따릅니다.
+- 아래 본문은 원래 승인된 계획을 기록으로 남겨 둔 것입니다. 이 절과 충돌하면 이 절을 따릅니다.
+
 ## 목표
 
 **요청:** 디자인 시스템 패키지 개발을 시작합니다.
@@ -81,8 +101,9 @@
   - `pnpm install && pnpm lint && pnpm format:check && pnpm typecheck`가 모두 통과합니다.
   - 일부러 `src/styles/` 아래에 `import 'react'`를 넣으면 `pnpm lint`가 실패합니다. 이 규칙은 Oxlint에서 동작하는지 아직 확인하지 않았습니다. 동작하지 않으면 대안을 기록하고 사용자에게 다시 묻습니다.
 
-### T2. 토큰 패키지
+### T2. 토큰 패키지 → placeholder 토큰 파이프라인
 
+- **범위 변경 후:** Figma 추출 대신 placeholder DTCG JSON을 원본으로 씁니다. 출력(`tokens.css`, `theme.css`, `index.ts`)과 테스트(이름 중복 없음, `vars`·`values` 일치, Tailwind 컴파일 시 `.bg-brand-default` 생성)는 그대로 유지하고, 개수 비교 기준은 placeholder JSON입니다.
 - 의존: T1
 - 작성 파일: `packages/tokens/**`
 - 작업 내용:
@@ -118,8 +139,9 @@
   - `npx publint`와 `npx @arethetypeswrong/cli --pack`에 오류가 없습니다.
   - `dist` 진입 파일의 첫 줄이 `"use client"`입니다(grep).
 
-### T4. Button (첫 번째 수직 슬라이스)
+### T4. Button (첫 번째 수직 슬라이스) — 보류
 
+- **범위 변경 후:** 새 디자인 시스템이 나올 때까지 보류합니다. 아래 내용은 기록용입니다.
 - 의존: T3
 - 작성 파일: `packages/react/src/components/button/**`, `packages/react/src/styles/button.css`, `packages/react/src/index.ts`
 - 작업 내용:
@@ -135,6 +157,7 @@
 
 ### T5. Storybook
 
+- **범위 변경 후:** 의존은 T3입니다. Button 스토리 대신 placeholder 토큰 문서 페이지와 `styles.css`·`tailwind.css` 동작을 보여 주는 예시 스토리(평범한 요소에 `--tm-*` 적용)를 만듭니다. 브라우저 테스트도 이 요소로 검사합니다: 토큰 값 적용, Tailwind 유틸리티 덮어쓰기와 import 순서 무관, `:root` 재정의 반영.
 - 의존: T4
 - 작성 파일: `apps/storybook/**`
 - 작업 내용:
@@ -152,6 +175,7 @@
 
 ### T6. 사용하는 쪽 검증 예제
 
+- **범위 변경 후:** 의존은 T3입니다. Button 대신 `styles.css` import, `/tokens`의 `vars`·`values` 사용, 패키지 진입점 import(Next.js 서버 컴포넌트 포함)를 검증합니다.
 - 의존: T5
 - 작성 파일: `examples/{vite-tailwind,vite-styled-components,next-app-router}/**`, `scripts/test-consumers.*`
 - 작업 내용:
@@ -164,6 +188,7 @@
 
 ### T7. CI와 배포 흐름
 
+- **범위 변경 후:** CI 워크플로는 Button 없이 T1–T3·T5·T6 결과만 검사합니다. 실제 npm 배포, Vercel 프로젝트 연결은 사용자 확인 전까지 하지 않습니다.
 - 의존: T6
 - 작성 파일: `.github/workflows/{ci,release}.yml`, `vercel.json` 또는 Vercel 프로젝트 설정 문서
 - 작업 내용:
