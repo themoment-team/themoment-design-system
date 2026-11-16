@@ -14,7 +14,11 @@
       "import": "./dist/index.js"
     },
     "./styles.css": "./dist/styles.css",
-    "./tailwind.css": "./dist/tailwind.css"
+    "./tailwind.css": "./dist/tailwind.css",
+    "./tokens": {
+      "types": "./dist/tokens.d.ts",
+      "import": "./dist/tokens.js"
+    }
   },
   "scripts": {
     "build": "tsdown && node scripts/build-css.mjs",
