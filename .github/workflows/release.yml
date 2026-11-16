@@ -32,11 +32,13 @@ jobs:
       # npm >=11.5.1 supports trusted publishing; independent of Node's bundled npm.
       - run: npm install --global npm@11.5.1
       - run: pnpm install --frozen-lockfile
+      # publish-script는 셸을 거치지 않으므로 빌드는 별도 step으로 실행합니다.
+      - run: pnpm build
       - uses: changesets/action@v2.1.2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           version-script: pnpm changeset version
-          publish-script: pnpm build && pnpm changeset publish
+          publish-script: pnpm changeset publish
           pr-title: 'chore: 패키지 릴리스 버전 갱신'
           commit-message: 'chore: 패키지 릴리스 버전 갱신'
         env:
