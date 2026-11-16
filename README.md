@@ -20,8 +20,8 @@ pnpm format:check
 pnpm typecheck
 ```
 
-`pnpm format`은 포맷을 적용합니다. 테스트와 빌드는 `pnpm test`, `pnpm build`로 실행하며, Storybook과 사용하는 쪽 검증은 각각 `pnpm test:storybook`, `pnpm test:consumers`로 분리합니다. 테스트·빌드 구현은 후속 작업에서 추가합니다.
+`pnpm format`은 포맷을 적용합니다. 테스트와 빌드는 `pnpm test`, `pnpm build`로 실행하며, Storybook과 사용하는 쪽 검증은 각각 `pnpm test:storybook`, `pnpm test:consumers`로 분리합니다.
 
-현재 패키지는 빈 골격이며, 각 패키지의 TypeScript 설정은 소스 추가 전까지 빈 프로젝트로 둡니다. 소스를 추가할 때 `files`와 `references` 대신 `include`를 지정하고 타입 검사 스크립트를 확장합니다.
+토큰 값은 새 디자인 시스템이 나오기 전까지 임시값(placeholder)이며, 컴포넌트는 아직 없습니다. 패키지별 구조와 사용법은 각 패키지 README를 참고하세요.
 
 `packages/react/src/styles/**`에서는 React 런타임을 가져올 수 없습니다. 토큰과 React 패키지는 Changesets의 고정 그룹으로 함께 버전이 올라갑니다.
