@@ -21,10 +21,13 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "test": "node --test tests/*.test.mjs",
-    "typecheck": "node scripts/build.mjs && tsc --project tsconfig.json --pretty false"
+    "typecheck": "node scripts/build.mjs && tsc --project tsconfig.json --pretty false",
+    "lint:package": "publint && attw --pack ."
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "0.18.5",
     "@tailwindcss/cli": "4.3.5",
+    "publint": "0.3.25",
     "style-dictionary": "5.8.0",
     "tailwindcss": "4.3.5"
   }

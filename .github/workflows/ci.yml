@@ -31,5 +31,6 @@ jobs:
       # Root test includes Storybook browser tests; do not run test:storybook twice.
       - run: pnpm test
       - run: pnpm build
+      - run: pnpm lint:packages
       - run: pnpm --filter storybook build
       - run: pnpm test:consumers

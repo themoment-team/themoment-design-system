@@ -10,7 +10,8 @@
     "test": "turbo run test",
     "build": "turbo run build --filter=./packages/*",
     "test:storybook": "pnpm --filter storybook test",
-    "test:consumers": "node scripts/test-consumers.mjs"
+    "test:consumers": "node scripts/test-consumers.mjs",
+    "lint:packages": "pnpm --filter './packages/*' lint:package"
   },
   "devDependencies": {
     "@changesets/cli": "3.0.3",

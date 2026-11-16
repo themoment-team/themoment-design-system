@@ -119,11 +119,10 @@ pnpm --filter @themoment-team/design-system-react typecheck
 
 ### 배포 전 검사
 
-`packages/react`에서 실행합니다.
+빌드한 뒤 저장소 루트에서 실행합니다. CI에서도 같은 명령으로 두 패키지를 검사합니다.
 
 ```sh
-npx publint
-npx @arethetypeswrong/cli --pack .
+pnpm lint:packages # 각 패키지에서 publint && attw --pack .
 ```
 
 `.attw.json`에 두 가지를 설정해 두었습니다.

@@ -28,12 +28,14 @@
   "scripts": {
     "build": "tsdown && node scripts/build-css.mjs",
     "test": "vitest run",
-    "typecheck": "tsc --project tsconfig.json --pretty false"
+    "typecheck": "tsc --project tsconfig.json --pretty false",
+    "lint:package": "publint && attw --pack ."
   },
   "dependencies": {
     "@themoment-team/design-system-tokens": "workspace:*"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "0.18.5",
     "@testing-library/dom": "10.4.2",
     "@testing-library/react": "16.3.3",
     "@types/node": "22.20.5",
@@ -41,6 +43,7 @@
     "@types/react-dom": "19.3.0",
     "jsdom": "31.0.1",
     "lightningcss": "1.33.0",
+    "publint": "0.3.25",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "tsdown": "0.23.7",
