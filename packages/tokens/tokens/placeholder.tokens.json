@@ -1,0 +1,30 @@
+{
+  "$description": "모든 값은 파이프라인 검증용 placeholder이며 실제 디자인 값이 아닙니다. 디자이너의 확정 DTCG export로 교체해야 합니다.",
+  "color": {
+    "$type": "color",
+    "brand": {
+      "default": {
+        "$value": { "colorSpace": "srgb", "components": [0.5, 0.5, 0.5], "alpha": 1 }
+      }
+    },
+    "text": {
+      "primary": {
+        "$value": { "colorSpace": "srgb", "components": [0.1, 0.1, 0.1], "alpha": 1 }
+      }
+    },
+    "surface": {
+      "default": {
+        "$value": { "colorSpace": "srgb", "components": [1, 1, 1], "alpha": 1 }
+      }
+    }
+  },
+  "radius": {
+    "md": { "$type": "dimension", "$value": { "value": 4, "unit": "px" } }
+  },
+  "spacing": {
+    "4": { "$type": "dimension", "$value": { "value": 16, "unit": "px" } }
+  },
+  "font-size": {
+    "body": { "$type": "dimension", "$value": { "value": 16, "unit": "px" } }
+  }
+}
