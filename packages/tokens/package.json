@@ -1,8 +1,26 @@
 {
   "name": "@themoment-team/design-system-tokens",
   "version": "0.0.0",
+  "files": [
+    "dist"
+  ],
   "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens.css": "./dist/tokens.css",
+    "./theme.css": "./dist/theme.css"
+  },
   "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
     "typecheck": "tsc --build --pretty false"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.5",
+    "style-dictionary": "5.8.0",
+    "tailwindcss": "4.3.5"
   }
 }
