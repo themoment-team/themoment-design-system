@@ -30,7 +30,6 @@ for (const file of readdirSync(`${root}tokens`, { recursive: true }).sort()) {
 const cssName = (path) => `--tm-${path.map((segment) => segment.toLowerCase()).join('-')}`;
 
 test('모든 원본 토큰이 충돌 없이 CSS에 정확히 한 번 선언된다', () => {
-  execFileSync(process.execPath, ['scripts/build.mjs'], { cwd: root, stdio: 'pipe' });
   const css = readFileSync(`${root}dist/tokens.css`, 'utf8');
   const names = sourceTokens.map(({ path }) => cssName(path));
   assert.ok(names.length > 0);

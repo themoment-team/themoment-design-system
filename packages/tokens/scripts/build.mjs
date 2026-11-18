@@ -1,8 +1,10 @@
 import StyleDictionary from 'style-dictionary';
 import { fileURLToPath } from 'node:url';
-import { writeFile } from 'node:fs/promises';
+import { rm, writeFile } from 'node:fs/promises';
 
 process.chdir(fileURLToPath(new URL('../', import.meta.url)));
+// 발행 대상인 dist를 비우고 시작해 이전 빌드 잔여물이 tarball에 들어가지 않게 합니다.
+await rm('dist', { recursive: true, force: true });
 
 StyleDictionary.registerTransform({
   name: 'name/tm-path',

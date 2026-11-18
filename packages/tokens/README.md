@@ -32,7 +32,7 @@ pnpm --filter @themoment-team/design-system-tokens typecheck
 - `spacing.4` → `--tm-spacing-4`
 - `font-size.body` → `--tm-font-size-body`
 
-빌드는 CSS 식별자로 표현할 수 없는 이름과 서로 다른 경로의 CSS 이름 충돌을 오류로 처리합니다. 경로 세그먼트는 영문·숫자·밑줄·하이픈으로 작성합니다. JS 객체 키는 원본 경로를 유지하므로 하이픈/숫자가 있는 키는 `vars['font-size'].body`, `vars.spacing['4']`처럼 접근합니다.
+빌드는 CSS 식별자로 표현할 수 없는 이름, 서로 다른 경로의 CSS 이름 충돌, Tailwind 테마 변수 이름 충돌을 오류로 처리합니다. `test`와 `typecheck`는 Turbo가 먼저 실행한 `build` 결과(`dist/`)를 읽으므로, 패키지에서 직접 실행할 때는 `build`를 먼저 실행합니다. 경로 세그먼트는 영문·숫자·밑줄·하이픈으로 작성합니다. JS 객체 키는 원본 경로를 유지하므로 하이픈/숫자가 있는 키는 `vars['font-size'].body`, `vars.spacing['4']`처럼 접근합니다.
 
 ## 사용
 
