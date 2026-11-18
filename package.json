@@ -7,7 +7,7 @@
     "format": "oxfmt --write",
     "format:check": "oxfmt --check",
     "typecheck": "turbo run typecheck",
-    "test": "turbo run test",
+    "test": "turbo run test --filter=!storybook",
     "build": "turbo run build --filter=./packages/*",
     "test:storybook": "turbo run test --filter=storybook",
     "test:consumers": "node scripts/test-consumers.mjs",

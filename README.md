@@ -20,7 +20,7 @@ pnpm format:check
 pnpm typecheck
 ```
 
-`pnpm format`은 포맷을 적용합니다. 테스트와 빌드는 `pnpm test`, `pnpm build`로 실행하며, Storybook과 사용하는 쪽 검증은 각각 `pnpm test:storybook`, `pnpm test:consumers`로 분리합니다.
+`pnpm format`은 포맷을 적용합니다. 테스트와 빌드는 `pnpm test`, `pnpm build`로 실행하며, Storybook 브라우저 테스트와 사용하는 쪽 검증은 각각 `pnpm test:storybook`, `pnpm test:consumers`로 분리합니다. `pnpm test:storybook`은 처음 한 번 `pnpm --filter storybook exec playwright install chromium`으로 브라우저를 설치해야 합니다.
 
 토큰 값은 새 디자인 시스템이 나오기 전까지 임시값(placeholder)이며, 컴포넌트는 아직 없습니다. 패키지별 구조와 사용법은 각 패키지 README를 참고하세요.
 

@@ -28,8 +28,8 @@ jobs:
       - run: pnpm format:check
       - run: pnpm typecheck
       - run: pnpm --filter storybook exec playwright install --with-deps chromium
-      # Root test includes Storybook browser tests; do not run test:storybook twice.
       - run: pnpm test
+      - run: pnpm test:storybook
       - run: pnpm build
       - run: pnpm lint:packages
       - run: pnpm build:storybook
