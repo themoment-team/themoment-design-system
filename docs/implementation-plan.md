@@ -99,7 +99,7 @@
   - Oxlint에 `no-restricted-imports` 규칙을 설정합니다. `src/styles/**`에서는 `react`를 import할 수 없습니다.
 - 완료 확인:
   - `pnpm install && pnpm lint && pnpm format:check && pnpm typecheck`가 모두 통과합니다.
-  - 일부러 `src/styles/` 아래에 `import 'react'`를 넣으면 `pnpm lint`가 실패합니다. 이 규칙은 Oxlint에서 동작하는지 아직 확인하지 않았습니다. 동작하지 않으면 대안을 기록하고 사용자에게 다시 묻습니다.
+  - 일부러 `src/styles/` 아래에 `import 'react'`를 넣으면 `pnpm lint`가 실패합니다. (2026-11-16 확인) 깨끗한 클론에서 임시 파일로 Oxlint `no-restricted-imports`가 실패하는 것을 확인했습니다. 지금은 `src/styles/`에 TS 파일이 없어 평소에는 걸릴 대상이 없으며, 컴포넌트를 추가할 때 다시 확인합니다.
 
 ### T2. 토큰 패키지 → placeholder 토큰 파이프라인
 
