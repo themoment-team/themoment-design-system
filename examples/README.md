@@ -35,7 +35,7 @@ App Router의 `app/layout.tsx`가 `globals.css`를 가져오고, 이 CSS가 `sty
 
 ## 미발행 패키지 검증
 
-저장소 루트에서 실행합니다. Node.js 22 이상과 루트 `packageManager`에 고정된 pnpm이 필요합니다.
+저장소 루트에서 실행합니다. Node.js 22 이상과 루트 `packageManager`에 고정된 pnpm이 필요합니다. 검증 스크립트는 macOS와 Linux(CI: Ubuntu)에서만 동작을 확인했으며 Windows는 지원하지 않습니다.
 
 ```sh
 pnpm install --frozen-lockfile

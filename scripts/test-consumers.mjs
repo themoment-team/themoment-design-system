@@ -9,11 +9,10 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const reactPackage = '@themoment-team/design-system-react';
 const tokensPackage = '@themoment-team/design-system-tokens';
 const examples = ['vite-tailwind', 'vite-styled-components', 'next-app-router'];
-const pnpm = process.platform === 'win32' ? 'pnpm.cmd' : 'pnpm';
 
 function run(args, cwd = root, config = {}) {
   console.log(`\n[consumers] ${args.join(' ')} (${cwd})`);
-  const result = spawnSync(pnpm, args, {
+  const result = spawnSync('pnpm', args, {
     cwd,
     stdio: 'inherit',
     env: { ...process.env, NEXT_TELEMETRY_DISABLED: '1', ...config },
