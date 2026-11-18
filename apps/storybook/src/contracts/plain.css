@@ -1,0 +1,5 @@
+@import '@themoment-team/design-system-react/styles.css';
+
+.fixture {
+  background-color: var(--tm-color-brand-default);
+}

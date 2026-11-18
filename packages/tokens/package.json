@@ -1,0 +1,35 @@
+{
+  "name": "@themoment-team/design-system-tokens",
+  "version": "0.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/themoment-team/themoment-design-system.git",
+    "directory": "packages/tokens"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens.css": "./dist/tokens.css",
+    "./theme.css": "./dist/theme.css"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "typecheck": "tsc --project tsconfig.json --pretty false",
+    "lint:package": "publint && attw --pack ."
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "0.18.5",
+    "@tailwindcss/cli": "4.3.5",
+    "publint": "0.3.25",
+    "style-dictionary": "5.8.0",
+    "tailwindcss": "4.3.5"
+  }
+}

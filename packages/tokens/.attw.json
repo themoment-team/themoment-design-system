@@ -1,0 +1,4 @@
+{
+  "profile": "esm-only",
+  "excludeEntrypoints": ["tokens.css", "theme.css"]
+}

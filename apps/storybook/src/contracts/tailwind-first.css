@@ -1,0 +1,4 @@
+@import 'tailwindcss';
+@import '@themoment-team/design-system-react/styles.css';
+@import '@themoment-team/design-system-react/tailwind.css';
+@source "./CssContract.stories.tsx";

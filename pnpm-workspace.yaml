@@ -1,0 +1,9 @@
+packages:
+  - 'packages/*'
+  - 'apps/*'
+
+saveExact: true
+
+allowBuilds:
+  '@parcel/watcher': false
+  esbuild: false

@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "overrides": [
+    {
+      "files": ["packages/react/src/styles/**"],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "paths": ["react", "react-dom"],
+            "patterns": ["react/*", "react-dom/*"]
+          }
+        ]
+      }
+    }
+  ]
+}
